@@ -274,7 +274,7 @@ public class IO_ES {
            
           } catch(InputMismatchException e){
               
-            System.out.println("Error: no ha introduccido un número real."+ e.getMessage());
+            System.out.println(Color.ROJO + "Error: no ha introduccido un número real."+ e.getMessage() + Color.RESET);
             
             flag = false;
             
@@ -490,6 +490,13 @@ public class IO_ES {
             s.reset();
             
             flag = true;     //salir del while  
+            
+            if (a < min){  
+
+                    System.out.println(Color.ROJO + "Introduzca un número mayor que " + min + "." + Color.RESET);
+                    
+                    flag = false;
+            }
            
           } catch(InputMismatchException e){
               
@@ -546,7 +553,7 @@ public class IO_ES {
            
           } catch(InputMismatchException e){
               
-            System.out.println("Error: no ha introduccido un número real."+ e.getMessage());
+            System.out.println(Color.ROJO + "Error: no ha introduccido un número real."+ e.getMessage() + Color.RESET);
             
             flag = false;
             
@@ -731,35 +738,34 @@ public class IO_ES {
         /** Variables auxiliares */
        
         boolean flag;
-       
         
-       //---------------------------------------------- 
-       /**          POCESAMIENTO DE DATOS            */
-       //----------------------------------------------
-        
-        do{
-          /** Clase Scanner para petición de datos de entrada */
+        /** Clase Scanner para petición de datos de entrada */
         
             Scanner s = new Scanner(System.in);
-            
-          //CAPTURAR EXCEPCIONES:
-          try{
+        
+        //---------------------------------------------- 
+        /**          POCESAMIENTO DE DATOS            */
+        //----------------------------------------------
+
+        do{
              
             System.out.print(msg); 
+
+            a = s.nextLine(); //ENTRADA DE DATOS 
             
-            a = s.next(); //ENTRADA DE DATOS 
+            System.out.println(a.length());
 
             flag = true;     //salir del while  
-           
-          } catch(InputMismatchException e){
-              
-            System.out.println(Color.ROJO + "Error: No ha introducido una cadena." + Color.RESET);
-            
-            flag = false;
-            
-          }//cierre del catch
+
+           if(a.length() > longitud){
+
+                System.out.println(Color.ROJO + "Error: la cadena es demasiado grande." + Color.RESET);
+
+                flag = false; //seguir en el while.
+
+            }
           
-        }while(flag == false);
+        }while(!flag);
         
         return a; //variable de salida.
         
@@ -782,6 +788,7 @@ public class IO_ES {
                
         /** Variables auxiliares */
        
+        String teclado;
         boolean flag;
        
         
@@ -793,24 +800,23 @@ public class IO_ES {
           /** Clase Scanner para petición de datos de entrada */
         
             Scanner s = new Scanner(System.in);
-            
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
+                        
             System.out.print("Introduzca un carácter"); 
             
-            a = s.next().charAt(0); //ENTRADA DE DATOS 
+            teclado = s.next(); //ENTRADA DE DATOS 
+            
+            a = teclado.charAt(0);
 
             flag = true;     //salir del while  
-           
-          } catch(InputMismatchException e){
-              
-            System.out.println(Color.ROJO + "Error: No ha introducido un carácter." + Color.RESET);
             
-            flag = false;
-            
-          }//cierre del catch
-          
+            if (teclado.length() != 1){
+                
+                System.out.println(Color.ROJO + "No ha introduccido un carácter." + Color.RESET);
+                
+                flag = false;
+                
+            }
+     
         }while(flag == false);
         
         return a; //variable de salida.
@@ -825,7 +831,7 @@ public class IO_ES {
      *           Ocurre cuando no introducimos una letra.
      */
     public static char leerCaracter(String msg){  
-        //----------------------------------------------
+     //----------------------------------------------
         /**          DECLARACIÓN DE VARIABLES         */
         //---------------------------------------------- 
         
@@ -834,6 +840,7 @@ public class IO_ES {
                
         /** Variables auxiliares */
        
+        String teclado;
         boolean flag;
        
         
@@ -845,28 +852,26 @@ public class IO_ES {
           /** Clase Scanner para petición de datos de entrada */
         
             Scanner s = new Scanner(System.in);
-            
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
+                        
             System.out.print(msg); 
             
-            a = s.next().charAt(0); //ENTRADA DE DATOS 
+            teclado = s.next(); //ENTRADA DE DATOS 
+            
+            a = teclado.charAt(0);
 
             flag = true;     //salir del while  
-           
-          } catch(InputMismatchException e){
-              
-            System.out.println(Color.ROJO + "Error: No ha introducido una cadena." + Color.RESET);
             
-            flag = false;
-            
-          }//cierre del catch
-          
+            if (teclado.length() != 1){
+                
+                System.out.println(Color.ROJO + "No ha introduccido un carácter." + Color.RESET);
+                
+                flag = false;
+                
+            }
+     
         }while(flag == false);
         
         return a; //variable de salida.
-        
     }//cierre método LeerCaracter(String msg)
     
     /**
@@ -973,85 +978,34 @@ public class IO_ES {
         return a; //variable de salida.
         
     }//cierre método LeerBooleano(String msg)
-       
-    /**
-     * Escribe una cadena sin salto de línea
-     * @param msg String de entrada.
-     * 
-     * Excepcion.
-     *            Ocurre cuando no introducimos una variable tipo String.
-     */
-    public static void escribir(String msg){
-        //----------------------------------------------
-        /**          DECLARACIÓN DE VARIABLES         */
-        //---------------------------------------------- 
-              
-        /** Variables auxiliares */
-       
-        boolean flag = false;       
-        
-       //---------------------------------------------- 
-       /**          POCESAMIENTO DE DATOS            */
-       //----------------------------------------------
-        
-        do{
-          
-          //CAPTURAR EXCEPCIONES:
-            try{
-                               
-                System.out.print("msg"); 
-                
-                flag = true; //salir del while  
-           
-            } catch(Exception e){
-            
-                System.out.println(Color.ROJO + "Error: valor no correcto." + e.getMessage() + Color.RESET);
-
-            }//cierre del catch
-
-        }while(flag == false);
-        
-            
-    }//cierre del método escribir
     
     /**
-     * Escribe una cadena scon salto de línea
-     * @param msg String de entrada.
-     * 
-     * Excepcion.
-     *            Ocurre cuando no introducimos una variable tipo String.
-     */
-    public static void escribirLN(String msg){
-        //----------------------------------------------
-        /**          DECLARACIÓN DE VARIABLES         */
-        //---------------------------------------------- 
-              
-        /** Variables auxiliares */
-       
-        boolean flag = false;       
+    * Método que muestra un String por pantalla con salto de línea
+    *
+    * @param msg mensaje que muestra en pantalla
+    */
+   public static void escribirLN(String msg) {
+      //---------------------------------------------- 
+      /**          POCESAMIENTO DE DATOS            */
+      //----------------------------------------------
         
-       //---------------------------------------------- 
-       /**          POCESAMIENTO DE DATOS            */
-       //----------------------------------------------
+      //Imprimir por pantalla:
+      System.out.println(msg);
+      
+   }//cierre del método escribirLN(String msg)
+   
+    /**
+    * Método que muestra un String por pantalla sin salto de línea
+    *
+    * @param msg mensaje que muestra en pantalla
+    */
+   public static void escribir(String msg) {
+      //---------------------------------------------- 
+      /**          POCESAMIENTO DE DATOS            */
+      //----------------------------------------------
         
-        do{
-          
-          //CAPTURAR EXCEPCIONES:
-            try{
-                               
-                System.out.println("msg"); 
-                
-                flag = true; //salir del while  
-           
-            } catch(Exception e){
-            
-                System.out.println(Color.ROJO + "Error: valor no correcto." + e.getMessage() + Color.RESET);
-
-            }//cierre del catch
-
-        }while(flag == false);
-        
-            
-    }//cierre del método escribirLN
+      //Imprimir por pantalla:       
+      System.out.print(msg);
+   }//cierre del método escribir(String msg)
     
 }//cierre de la clase IO_ES
