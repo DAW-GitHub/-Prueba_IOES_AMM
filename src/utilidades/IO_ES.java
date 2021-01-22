@@ -32,7 +32,11 @@ public class IO_ES {
                
        /** Variables auxiliares */
  
-       boolean numeroValido = false;
+       boolean correcto = false;
+       
+       /** Clase Scanner para petición de datos de entrada */
+        
+       Scanner s = new Scanner(System.in);
        
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
@@ -40,22 +44,21 @@ public class IO_ES {
 
        do {
 
-            Scanner sc = new Scanner(System.in);
-
-            System.out.print("Introduzca un numero entero: ");
-            String s = sc.nextLine();
-
-            if (s != null) {
-               try {
-                  d = Integer.valueOf(s);
-                  numeroValido = true;
-               } catch (NumberFormatException e) {
-                  System.out.println(Color.ROJO + "ERROR:  El numero introducido no es válido" + Color.RESET);
-               }
-            } else {
-               numeroValido = true; // Cancelado
-            }
-       } while (!numeroValido);
+                
+            try {
+                  
+                System.out.print("Introduzca un numero entero: ");
+                  
+                d = Integer.valueOf(s.nextLine());
+                  
+                correcto = true;
+                  
+            } catch (NumberFormatException e) {
+                   
+                System.out.println(Color.ROJO + "ERROR:  El numero introducido no es un entero" + Color.RESET);
+           }
+            
+       } while (!correcto);
 
        return d;
    }//cierre del método leerInteger()
@@ -69,7 +72,7 @@ public class IO_ES {
     */
    static public int leerInteger(String msg) {
        
-       //----------------------------------------------
+      //----------------------------------------------
        /**          DECLARACIÓN DE VARIABLES         */
        //---------------------------------------------- 
         
@@ -78,7 +81,11 @@ public class IO_ES {
                
        /** Variables auxiliares */
  
-       boolean numeroValido = false;
+       boolean correcto = false;
+       
+       /** Clase Scanner para petición de datos de entrada */
+        
+       Scanner s = new Scanner(System.in);
        
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
@@ -86,34 +93,25 @@ public class IO_ES {
 
        do {
 
-            Scanner sc = new Scanner(System.in);
-
-            System.out.print(msg);
-            String s = sc.nextLine();
-
-            if (s != null) {
                 
-               try {
-                   
-                  d = Integer.valueOf(s);
-                          
-                  numeroValido = true;
+            try {
                   
-               } catch (NumberFormatException e) {
-                   
-                  System.out.println(Color.ROJO + "ERROR:  El numero introducido no es válido" + Color.RESET);
+                System.out.print(msg);
                   
-               }
-               
-            } else {
-                
-               numeroValido = true; // Cancelado
-               
-            }
-       } while (!numeroValido);
+                d = Integer.valueOf(s.nextLine());
+                  
+                correcto = true;
+                  
+            } catch (NumberFormatException e) {
+                   
+                System.out.println(Color.ROJO + "ERROR:  El dato introducido no es un entero" + Color.RESET);
+           }
+            
+       } while (!correcto);
 
        return d;
-   }
+       
+   }//cierre método leerInteger(Strin msg) 
    
    /**
     * Método que pide al usuario que introduzca un número. 
@@ -123,56 +121,54 @@ public class IO_ES {
     * @return d valor introducido.
     */
    static public int leerInteger(String msg, int min) {
-      //----------------------------------------------
-      /**          DECLARACIÓN DE VARIABLES         */
-      //---------------------------------------------- 
-        
-      /** Variables de entrada - salida */
-      int d = 0;
-               
-      /** Variables auxiliares */
- 
-      boolean numeroValido = false;
        
-      //---------------------------------------------- 
-      /**          POCESAMIENTO DE DATOS            */
-      //----------------------------------------------
-
-      do {
-
-         Scanner sc = new Scanner(System.in);
-
-         System.out.print(msg);
-         String s = sc.nextLine();
-
-         if (s != null) {
-            try {
-               d = Integer.valueOf(s);
+       //----------------------------------------------
+       /**          DECLARACIÓN DE VARIABLES         */
+       //---------------------------------------------- 
+        
+       /** Variables de entrada - salida */
+       int d = 0;
                
-               numeroValido = true;
-               
-               if (d < min){  
+       /** Variables auxiliares */
+ 
+       boolean correcto = false;
+       
+       /** Clase Scanner para petición de datos de entrada */
+        
+       Scanner s = new Scanner(System.in);
+       
+       //---------------------------------------------- 
+       /**          POCESAMIENTO DE DATOS            */
+       //----------------------------------------------
 
-                    System.out.println(Color.ROJO + "Introduzca un número mayor que " + min + "." + Color.RESET);
-                    
-                    numeroValido = false;
-                }
-               
-            } catch (NumberFormatException e) {
+       do {
+
                 
-               System.out.println(Color.ROJO + "ERROR:  El numero introducido no es válido" + Color.RESET);
-               
-            }
-         } else {
-             
-            numeroValido = true; // Cancelado
-            
-         }
-         
-      } while (!numeroValido);
+            try {
+                  
+                System.out.print(msg);
+                  
+                d = Integer.valueOf(s.nextLine());
+                  
+                correcto = true;
+                
+                if (d < min){  
 
-      return d;
-   }
+                    System.out.println(Color.ROJO + "Introduzca un número mayor o igual que " + min + "." + Color.RESET);
+                    
+                    correcto = false;
+                }
+                  
+            } catch (NumberFormatException e) {
+                   
+                System.out.println(Color.ROJO + "ERROR:  El dato introducido no es un entero" + Color.RESET);
+           }
+            
+       } while (!correcto);
+
+       return d;
+
+   }//cierre método leerInteger(Strin msg, int min) 
    
    /**
     * Método que pide al usuario que introduzca un número. El número esperado es
@@ -182,54 +178,55 @@ public class IO_ES {
     * @param max valor máximo
     * @return d valor introducido.
     */
-   static public int leerInteger(String msg, int min, int max) {
-      //----------------------------------------------
-      /**          DECLARACIÓN DE VARIABLES         */
-      //---------------------------------------------- 
+   public static int leerInteger(String msg, int min, int max) {
+       //----------------------------------------------
+       /**          DECLARACIÓN DE VARIABLES         */
+       //---------------------------------------------- 
         
-      /** Variables de entrada - salida */
-      int d = 0;
+       /** Variables de entrada - salida */
+       int d = 0;
                
-      /** Variables auxiliares */
+       /** Variables auxiliares */
  
-      boolean numeroValido = false;
+       boolean correcto = false;
        
-      //---------------------------------------------- 
-      /**          POCESAMIENTO DE DATOS            */
-      //----------------------------------------------
+       /** Clase Scanner para petición de datos de entrada */
+        
+       Scanner s = new Scanner(System.in);
+       
+       //---------------------------------------------- 
+       /**          POCESAMIENTO DE DATOS            */
+       //----------------------------------------------
 
-      do {
+        do {
 
-         Scanner sc = new Scanner(System.in);
-
-         System.out.print(msg);
-         String s = sc.nextLine();
-
-         if (s != null) {
+                
             try {
-               d = Integer.valueOf(s);
-               
-               numeroValido = true;
+                  
+                System.out.print(msg);
+                  
+                d = Integer.valueOf(s.nextLine());
+                  
+                correcto = true;
+     
                
                if (d < min || d > max){  
 
                     System.out.println(Color.ROJO + "Introduzca un número del " + min + " al " + max + "." + Color.RESET);
                     
-                    numeroValido = false;
-                }
+                    correcto = false;
+                }//cierre del condicional if
                
             } catch (NumberFormatException e) {
-                
-               System.out.println(Color.ROJO + "ERROR:  El numero introducido no es válido" + Color.RESET);
-               
-            }
-         } else {
-            numeroValido = true; // Cancelado
-         }
-      } while (!numeroValido);
+                   
+                System.out.println(Color.ROJO + "ERROR:  El dato introducido no es un entero" + Color.RESET);
+           }//cierre del catch
+            
+       } while (!correcto);
 
-      return d;
-   }
+       return d;
+           
+   }//cierre método leerInteger(Strin msg, int min, int max) 
    
    /**
      * Pide por teclado y devuelve un número entero en formato largo
@@ -241,50 +238,45 @@ public class IO_ES {
     public static long leerEnteroLargo(){
        
         //----------------------------------------------
-        /**          DECLARACIÓN DE VARIABLES         */
-        //---------------------------------------------- 
+       /**          DECLARACIÓN DE VARIABLES         */
+       //---------------------------------------------- 
         
-        /** Variables de entrada - salida */
-        long a = 0;
+       /** Variables de entrada - salida */
+       long d = 0;
                
-        /** Variables auxiliares */
+       /** Variables auxiliares */
+ 
+       boolean correcto = false;
        
-        boolean flag;
-       
+       /** Clase Scanner para petición de datos de entrada */
         
+       Scanner s = new Scanner(System.in);
+       
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
        //----------------------------------------------
+
+        do {
+
+                
+            try {
+                  
+                System.out.print("Introduzca un número entero largo: ");
+                  
+                d = Long.valueOf(s.nextLine());
+                  
+                correcto = true;
+  
+            } catch (NumberFormatException e) {
+                   
+                System.out.println(Color.ROJO + "ERROR:  El dato introducido no es un entero" + Color.RESET);
+           }//cierre del catch
+            
+       } while (!correcto);
+
+       return d;
         
-        do{
-          /** Clase Scanner para petición de datos de entrada */
-        
-            Scanner s = new Scanner(System.in);
-            s.useLocale(Locale.US);
-            
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
-            System.out.print("Introduce un número: "); 
-            
-            a = s.nextLong(); //ENTRADA DE DATOS 
-            s.reset();
-            
-            flag = true;     //salir del while  
-           
-          } catch(InputMismatchException e){
-              
-            System.out.println(Color.ROJO + "Error: no ha introduccido un número real."+ e.getMessage() + Color.RESET);
-            
-            flag = false;
-            
-          }//cierre del catch
-          
-        }while(flag == false);
-        
-        return a; //variable de salida.
-        
-    }
+    }//cierre método LeerEnteroLargo() 
     
     /**
      * Pide por teclado y devuelve un número entero en formato largo
@@ -297,50 +289,45 @@ public class IO_ES {
     public static long leerEnteroLargo(String msg){
        
         //----------------------------------------------
-        /**          DECLARACIÓN DE VARIABLES         */
-        //---------------------------------------------- 
+       /**          DECLARACIÓN DE VARIABLES         */
+       //---------------------------------------------- 
         
-        /** Variables de entrada - salida */
-        long a = 0;
+       /** Variables de entrada - salida */
+       long d = 0;
                
-        /** Variables auxiliares */
+       /** Variables auxiliares */
+ 
+       boolean correcto = false;
        
-        boolean flag;
-       
+       /** Clase Scanner para petición de datos de entrada */
         
+       Scanner s = new Scanner(System.in);
+       
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
        //----------------------------------------------
+
+        do {
+
+                
+            try {
+                  
+                System.out.print(msg);
+                  
+                d = Long.valueOf(s.nextLine());
+                  
+                correcto = true;
+               
+            } catch (NumberFormatException e) {
+                   
+                System.out.println(Color.ROJO + "ERROR:  El dato introducido no es un entero" + Color.RESET);
+           }//cierre del catch
+            
+       } while (!correcto);
+
+       return d; //Variable de salida
         
-        do{
-          /** Clase Scanner para petición de datos de entrada */
-        
-            Scanner s = new Scanner(System.in);
-            s.useLocale(Locale.US);
-            
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
-            System.out.print(msg); 
-            
-            a = s.nextLong(); //ENTRADA DE DATOS 
-            s.reset();
-            
-            flag = true;     //salir del while  
-           
-          } catch(InputMismatchException e){
-              
-            System.out.println("Error: no ha introduccido un número real."+ e.getMessage());
-            
-            flag = false;
-            
-          }//cierre del catch
-          
-        }while(flag == false);
-        
-        return a; //variable de salida.
-        
-    }
+    }//cierre método leerEnteroLargo(String msg) 
    
     /**
      * Pide por teclado y devuelve un número real
@@ -351,49 +338,45 @@ public class IO_ES {
      */
     public static float leerReal (){
         //----------------------------------------------
-        /**          DECLARACIÓN DE VARIABLES         */
-        //---------------------------------------------- 
+       /**          DECLARACIÓN DE VARIABLES         */
+       //---------------------------------------------- 
         
-        /** Variables de entrada - salida */
-        float a = 0;
+       /** Variables de entrada - salida */
+       float d = 0;
                
-        /** Variables auxiliares */
+       /** Variables auxiliares */
+ 
+       boolean correcto = false;
        
-        boolean flag;
-       
+       /** Clase Scanner para petición de datos de entrada */
         
+       Scanner s = new Scanner(System.in);
+       
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
        //----------------------------------------------
-        
-        do{
-          /** Clase Scanner para petición de datos de entrada */
-        
-            Scanner s = new Scanner(System.in);
-            s.useLocale(Locale.US);
+
+        do {
+
+                
+            try {
+                  
+                System.out.print("Introduzca un número real: ");
+                  
+                d = Float.valueOf(s.nextLine());
+                  
+                correcto = true;
+               
+            } catch (NumberFormatException e) {
+                   
+                System.out.println(Color.ROJO + "ERROR:  El dato introducido no es un real" + Color.RESET);
+           }//cierre del catch
             
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
-            System.out.print("Introduce un número: "); 
-            
-            a = s.nextFloat(); //ENTRADA DE DATOS 
-            s.reset();
-            
-            flag = true;     //salir del while  
-           
-          } catch(InputMismatchException e){
-              
-            System.out.println(Color.ROJO + "Error: no ha introduccido un número real." + Color.RESET);
-            
-            flag = false;
-            
-          }//cierre del catch
-          
-        }while(flag == false);
-        
-        return a; //variable de salida.
-    }
+       } while (!correcto);
+
+       return d; //Variable de salida
+       
+    }//cierre método leerReal()
     
     /**
      * Pide por teclado y devuelve un número real
@@ -404,50 +387,47 @@ public class IO_ES {
      *            Ocurre cuando no introducimos un número real.
      */
     public static float leerReal (String msg){
+       
         //----------------------------------------------
-        /**          DECLARACIÓN DE VARIABLES         */
-        //---------------------------------------------- 
+       /**          DECLARACIÓN DE VARIABLES         */
+       //---------------------------------------------- 
         
-        /** Variables de entrada - salida */
-        float a = 0;
+       /** Variables de entrada - salida */
+       float d = 0;
                
-        /** Variables auxiliares */
+       /** Variables auxiliares */
+ 
+       boolean correcto = false;
        
-        boolean flag;
-       
+       /** Clase Scanner para petición de datos de entrada */
         
+       Scanner s = new Scanner(System.in);
+       
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
        //----------------------------------------------
-        
-        do{
-          /** Clase Scanner para petición de datos de entrada */
-        
-            Scanner s = new Scanner(System.in);
-            s.useLocale(Locale.US);
+
+        do {
+
+                
+            try {
+                  
+                System.out.print(msg);
+                  
+                d = Float.valueOf(s.nextLine());
+                  
+                correcto = true;
+               
+            } catch (NumberFormatException e) {
+                   
+                System.out.println(Color.ROJO + "ERROR:  El dato introducido no es un real" + Color.RESET);
+           }//cierre del catch
             
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
-            System.out.print(msg); 
-            
-            a = s.nextFloat(); //ENTRADA DE DATOS 
-            s.reset();
-            
-            flag = true;     //salir del while  
-           
-          } catch(InputMismatchException e){
-              
-            System.out.println(Color.ROJO + "Error: no ha introduccido un número real." + Color.RESET);
-            
-            flag = false;
-            
-          }//cierre del catch
-          
-        }while(flag == false);
-        
-        return a; //variable de salida.
-    }
+       } while (!correcto);
+
+       return d; //Variable de salida
+       
+    }//cierre método leerReal (String msg)
        
     /**
      * Pide por teclado y devuelve un número real.
@@ -459,57 +439,53 @@ public class IO_ES {
      *            Ocurre cuando no introducimos un número real.
      */
     public static float leerReal (String msg, int min){
-        //----------------------------------------------
-        /**          DECLARACIÓN DE VARIABLES         */
-        //---------------------------------------------- 
+       //----------------------------------------------
+       /**          DECLARACIÓN DE VARIABLES         */
+       //---------------------------------------------- 
         
-        /** Variables de entrada - salida */
-        float a = 0;
+       /** Variables de entrada - salida */
+       float d = 0;
                
-        /** Variables auxiliares */
+       /** Variables auxiliares */
+ 
+       boolean correcto = false;
        
-        boolean flag;
-       
+       /** Clase Scanner para petición de datos de entrada */
         
+       Scanner s = new Scanner(System.in);
+       
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
        //----------------------------------------------
-        
-        do{
-          /** Clase Scanner para petición de datos de entrada */
-        
-            Scanner s = new Scanner(System.in);
-            s.useLocale(Locale.US);
-            
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
-            System.out.print(msg); 
-            
-            a = s.nextFloat(); //ENTRADA DE DATOS 
-            s.reset();
-            
-            flag = true;     //salir del while  
-            
-            if (a < min){  
 
-                    System.out.println(Color.ROJO + "Introduzca un número mayor que " + min + "." + Color.RESET);
+        do {
+
+                
+            try {
+                  
+                System.out.print(msg);
+                  
+                d = Float.valueOf(s.nextLine());
+                  
+                correcto = true;
+
+            
+            if (d < min){  
+
+                    System.out.println(Color.ROJO + "Introduzca un número mayor o igual que " + min + "." + Color.RESET);
                     
-                    flag = false;
+                    correcto = false;
             }
            
-          } catch(InputMismatchException e){
-              
-            System.out.println(Color.ROJO + "Error: no ha introduccido un número real." + Color.RESET);
+          } catch (NumberFormatException e) {
+                   
+                System.out.println(Color.ROJO + "ERROR:  El dato introducido no es un real" + Color.RESET);
+           }//cierre del catch
             
-            flag = false;
-            
-          }//cierre del catch
-          
-        }while(flag == false);
-        
-        return a; //variable de salida.
-    }
+       } while (!correcto);
+
+       return d; //Variable de salida
+    }//cierre método leerReal (String msg, int min)
     
     /**
      * Pide por teclado y devuleve un número real en formato largo
@@ -519,51 +495,47 @@ public class IO_ES {
      *            Ocurre cuando no introducimos un número real en formato largo.
      */
     public static double leerRealLargo(){
-        //----------------------------------------------
-        /**          DECLARACIÓN DE VARIABLES         */
-        //---------------------------------------------- 
+       
+       //----------------------------------------------
+       /**          DECLARACIÓN DE VARIABLES         */
+       //---------------------------------------------- 
         
-        /** Variables de entrada - salida */
-        double a = 0;
+       /** Variables de entrada - salida */
+       double d = 0;
                
-        /** Variables auxiliares */
+       /** Variables auxiliares */
+ 
+       boolean correcto = false;
        
-        boolean flag;
-       
+       /** Clase Scanner para petición de datos de entrada */
         
+       Scanner s = new Scanner(System.in);
+       
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
        //----------------------------------------------
-        
-        do{
-          /** Clase Scanner para petición de datos de entrada */
-        
-            Scanner s = new Scanner(System.in);
-            s.useLocale(Locale.US);
-            
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
-            System.out.print("Introduce un número: "); 
-            
-            a = s.nextDouble(); //ENTRADA DE DATOS 
-            s.reset();
-            
-            flag = true;     //salir del while  
+
+        do {
+
+                
+            try {
+                  
+                System.out.print("Introduzca un número real largo: ");
+                  
+                d = Double.valueOf(s.nextLine());
+                  
+                correcto = true;
            
-          } catch(InputMismatchException e){
-              
-            System.out.println(Color.ROJO + "Error: no ha introduccido un número real."+ e.getMessage() + Color.RESET);
+          } catch (NumberFormatException e) {
+                   
+                System.out.println(Color.ROJO + "ERROR:  El dato introducido no es un real" + Color.RESET);
+           }//cierre del catch
             
-            flag = false;
-            
-          }//cierre del catch
-          
-        }while(flag == false);
+       } while (!correcto);
+
+       return d; //Variable de salida
         
-        return a; //variable de salida.
-        
-    }
+    }//cierre método leerRealLargo()
    
     /**
      * Pide por teclado y devuleve un número real en formato largo
@@ -573,51 +545,47 @@ public class IO_ES {
      *            Ocurre cuando no introducimos un número real en formato largo.
      */
     public static double leerRealLargo(String msg){
+       
         //----------------------------------------------
-        /**          DECLARACIÓN DE VARIABLES         */
-        //---------------------------------------------- 
+       /**          DECLARACIÓN DE VARIABLES         */
+       //---------------------------------------------- 
         
-        /** Variables de entrada - salida */
-        double a = 0;
+       /** Variables de entrada - salida */
+       double d = 0;
                
-        /** Variables auxiliares */
+       /** Variables auxiliares */
+ 
+       boolean correcto = false;
        
-        boolean flag;
-       
+       /** Clase Scanner para petición de datos de entrada */
         
+       Scanner s = new Scanner(System.in);
+       
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
        //----------------------------------------------
-        
-        do{
-          /** Clase Scanner para petición de datos de entrada */
-        
-            Scanner s = new Scanner(System.in);
-            s.useLocale(Locale.US);
-            
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
-            System.out.print(msg); 
-            
-            a = s.nextDouble(); //ENTRADA DE DATOS 
-            s.reset();
-            
-            flag = true;     //salir del while  
+
+        do {
+
+                
+            try {
+                  
+                System.out.print(msg);
+                  
+                d = Double.valueOf(s.nextLine());
+                  
+                correcto = true;
            
-          } catch(InputMismatchException e){
-              
-            System.out.println("Error: no ha introduccido un número real."+ e.getMessage());
+          } catch (NumberFormatException e) {
+                   
+                System.out.println(Color.ROJO + "ERROR:  El dato introducido no es un real" + Color.RESET);
+           }//cierre del catch
             
-            flag = false;
-            
-          }//cierre del catch
-          
-        }while(flag == false);
+       } while (!correcto);
+
+       return d; //Variable de salida
         
-        return a; //variable de salida.
-        
-    }
+    }//cierre método leerRealLargo(String msg) 
     
     /**
      * Pide por teclado y devuelve una letra
@@ -632,43 +600,22 @@ public class IO_ES {
         
         /** Variables de entrada - salida */
         String a = "";
-               
-        /** Variables auxiliares */
-       
-        boolean flag;
-       
         
+        /** Clase Scanner para petición de datos de entrada */
+        
+        Scanner s = new Scanner(System.in);
+            
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
        //----------------------------------------------
-        
-        do{
-          /** Clase Scanner para petición de datos de entrada */
-        
-            Scanner s = new Scanner(System.in);
-            
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
-            System.out.print("Escriba un texto:"); 
-            
-            a = s.next(); //ENTRADA DE DATOS 
 
-            flag = true;     //salir del while  
-           
-          } catch(InputMismatchException e){
-              
-            System.out.println(Color.ROJO + "Error: No ha introducido una cadena." + Color.RESET);
+        System.out.print("Escriba un texto:"); 
             
-            flag = false;
-            
-          }//cierre del catch
-          
-        }while(flag == false);
+        a = s.nextLine(); //ENTRADA DE DATOS.
         
         return a; //variable de salida.
         
-    }
+    }//cierre método leerCadena()
     
     /**
      * Pide por teclado y devuelve una letra
@@ -683,43 +630,20 @@ public class IO_ES {
         
         /** Variables de entrada - salida */
         String a = "";
-               
-        /** Variables auxiliares */
-       
-        boolean flag;
-       
-        
+   
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
        //----------------------------------------------
-        
-        do{
-          /** Clase Scanner para petición de datos de entrada */
-        
-            Scanner s = new Scanner(System.in);
-            
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
-            System.out.print(msg); 
-            
-            a = s.next(); //ENTRADA DE DATOS 
 
-            flag = true;     //salir del while  
-           
-          } catch(InputMismatchException e){
-              
-            System.out.println(Color.ROJO + "Error: No ha introducido una cadena." + Color.RESET);
+        Scanner s = new Scanner(System.in);
+                        
+        System.out.print(msg); 
             
-            flag = false;
-            
-          }//cierre del catch
-          
-        }while(flag == false);
-        
+        a = s.nextLine(); //ENTRADA DE DATOS 
+
         return a; //variable de salida.
         
-    }
+    }//cierre método leerCadena(String msg)
     
     /**
      * Pide por teclado y devuelve una letra
@@ -752,14 +676,12 @@ public class IO_ES {
             System.out.print(msg); 
 
             a = s.nextLine(); //ENTRADA DE DATOS 
-            
-            System.out.println(a.length());
 
             flag = true;     //salir del while  
 
-           if(a.length() > longitud){
+           if(a.length() != longitud){
 
-                System.out.println(Color.ROJO + "Error: la cadena es demasiado grande." + Color.RESET);
+                System.out.println(Color.ROJO + "Error: la cadena no contiene 10 caracteres." + Color.RESET);
 
                 flag = false; //seguir en el while.
 
@@ -769,7 +691,7 @@ public class IO_ES {
         
         return a; //variable de salida.
         
-    }
+    }//cierre método leerCadena(String msg, int longitud)
     
    /**
      * Pide por teclado y devuelve un caracter
@@ -801,7 +723,7 @@ public class IO_ES {
         
             Scanner s = new Scanner(System.in);
                         
-            System.out.print("Introduzca un carácter"); 
+            System.out.print("Introduzca un carácter: "); 
             
             teclado = s.next(); //ENTRADA DE DATOS 
             
@@ -811,7 +733,7 @@ public class IO_ES {
             
             if (teclado.length() != 1){
                 
-                System.out.println(Color.ROJO + "No ha introduccido un carácter." + Color.RESET);
+                System.out.println(Color.ROJO + "Error. No ha introduccido un carácter." + Color.RESET);
                 
                 flag = false;
                 
@@ -882,54 +804,70 @@ public class IO_ES {
      *           Ocurre cuando no se introduce un bolleano.
      */
     public static boolean leerBooleano(){  
+     
         //----------------------------------------------
         /**          DECLARACIÓN DE VARIABLES         */
         //---------------------------------------------- 
         
         /** Variables de entrada - salida */
-        boolean a = false;
+        boolean booleano = false;
                
         /** Variables auxiliares */
        
-        boolean flag;
-       
+        String a = "";
         
+        boolean flag = false;
+       
+        /** Clase Scanner para petición de datos de entrada */
+        
+            Scanner s = new Scanner(System.in);
+            
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
        //----------------------------------------------
         
         do{
-          /** Clase Scanner para petición de datos de entrada */
-        
-            Scanner s = new Scanner(System.in);
-            
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
-            System.out.print("¿true o False? "); 
-            
-            a = s.nextBoolean(); //ENTRADA DE DATOS 
-
-            flag = true;     //salir del while  
-           
-          } catch(InputMismatchException e){
-              
-            System.out.println(Color.ROJO + "Error: No ha introducido un booleano." + Color.RESET);
-            
-            flag = false;
-            
-          }//cierre del catch
           
-        }while(flag == false);
+             
+            System.out.print("¿Está de acuerdo? [s/n] "); 
+            
+            a = s.nextLine().toUpperCase();//ENTRADA DE DATOS 
+       
+            flag = true;
+            
+            switch (a){
+                case "N":
+                    
+                    booleano = false;
+                    
+                    break;
+                    
+                case "S":
+                    
+                    booleano = true;
+                    
+                    break;
+                    
+                default:
+                    
+                    System.out.println(Color.ROJO + "La opción elegida no es válida." + Color.RESET);
+                    
+                    flag = false;
+                    
+                    break;
+            }
+                     
+        }while(!flag);
         
-        return a; //variable de salida.
+        return booleano; //variable de salida.
+        
         
     }//cierre método LeerBooleano()
 
     /**
-     * Pide por teclaro un booleano y lo devuelve.
+     * Es un método de confirmación, el usuario introduce si o no.
      * @param msg mensaje a mostrar al pedir por pantalla.
-     * @return  a booleano introduccido.
+     * @return  a booleano.
      * 
      *  Excepcion
      *           Ocurre cuando no se introduce un bolleano.
@@ -940,42 +878,57 @@ public class IO_ES {
         //---------------------------------------------- 
         
         /** Variables de entrada - salida */
-        boolean a = false;
+        boolean booleano = false;
                
         /** Variables auxiliares */
        
-        boolean flag;
-       
+        String a = "";
         
+        boolean flag = false;
+       
+        /** Clase Scanner para petición de datos de entrada */
+        
+            Scanner s = new Scanner(System.in);
+            
        //---------------------------------------------- 
        /**          POCESAMIENTO DE DATOS            */
        //----------------------------------------------
         
         do{
-          /** Clase Scanner para petición de datos de entrada */
-        
-            Scanner s = new Scanner(System.in);
-            
-          //CAPTURAR EXCEPCIONES:
-          try{
-             
-            System.out.print(msg); 
-            
-            a = s.nextBoolean(); //ENTRADA DE DATOS 
-
-            flag = true;     //salir del while  
-           
-          } catch(InputMismatchException e){
-              
-            System.out.println(Color.ROJO + "Error: No ha introducido un booleano." + Color.RESET);
-            
-            flag = false;
-            
-          }//cierre del catch
           
-        }while(flag == false);
+             
+            System.out.print(msg + "[s/n] "); 
+            
+            a = s.nextLine().toUpperCase(); //ENTRADA DE DATOS 
+            
+            flag = true;
+            
+            switch (a){
+                case "N":
+                    
+                    booleano = false;
+                    
+                    break;
+                    
+                case "S":
+                    
+                    booleano = true;
+                    
+                    break;
+                    
+                default:
+                    
+                    System.out.println(Color.ROJO + "La opción elegida no es válida." + Color.RESET);
+                    
+                    flag = false;
+                    
+                    break;
+            }
+            
+             
+        }while(!flag);
         
-        return a; //variable de salida.
+        return booleano; //variable de salida.
         
     }//cierre método LeerBooleano(String msg)
     
