@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package principal;
 
 import java.util.InputMismatchException;
@@ -10,12 +6,17 @@ import java.util.Scanner;
 import utilidades.Color;
 import utilidades.IO_ES;
 
-/**
+/**Clase para elegir que desea leer o escribir
  *
- * @author Ana
+ * @author Ana Muñiz
+ * @version 1.0
  */
 public class Prueba_IOES_AMM {
     
+    /**
+     * Método que visualiza el menú de elección y devuelve la opción elegida
+     * @return opción elegida
+     */
     public static int menu(){
         //----------------------------------------------
         /**          DECLARACIÓN DE VARIABLES         */
@@ -57,7 +58,11 @@ public class Prueba_IOES_AMM {
         
         return option;
     }
-
+    
+    /**
+     * Método que permite realizar una pausa en la ejecución.
+     * @param ms tiempo de pausa en ms.
+     */
     public static void dormir(int ms){
         try {
                     //Ponemos a "Dormir" el programa durante los ms deseados
@@ -65,11 +70,12 @@ public class Prueba_IOES_AMM {
                         
             } catch (Exception e) {
                     
-                    IO_ES.escribirLN(e.getMessage());
+                    
             }
     }
     
     /**
+     * Método main para la ejecución del proyecto
      * @param args the command line arguments
      */
     public static void main(String[] args) {

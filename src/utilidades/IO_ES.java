@@ -536,10 +536,11 @@ public class IO_ES {
        return d; //Variable de salida
         
     }//cierre método leerRealLargo()
-   
+
     /**
      * Pide por teclado y devuleve un número real en formato largo
-     * @return número real introducido.
+     * @param msg número real introducido
+     * @return 
      * 
      * Excepcion.
      *            Ocurre cuando no introducimos un número real en formato largo.
@@ -588,10 +589,10 @@ public class IO_ES {
     }//cierre método leerRealLargo(String msg) 
     
     /**
-     * Pide por teclado y devuelve una letra
-     * @param mensaje mensaje saliente.
+     * Pide por teclado y devuelve una palabra o texto
      * @return letra introducida.
-     * @throws Ocurre cuando no introducimos una letra.
+     * Exception.
+     *           Ocurre cuando no introducimos una cadena de texto.
      */
     public static String leerCadena(){  
         //----------------------------------------------
@@ -618,10 +619,9 @@ public class IO_ES {
     }//cierre método leerCadena()
     
     /**
-     * Pide por teclado y devuelve una letra
-     * @param mensaje mensaje saliente.
-     * @return letra introducida.
-     * @throws Ocurre cuando no introducimos una letra.
+     * Pide por teclado y devuelve una palabra o texto, mediante un mesaje dado.
+     * @param msg mensaje porporcionado para pedir la cadena de texto
+     * @return cadena de texto
      */
     public static String leerCadena(String msg){  
         //----------------------------------------------
@@ -646,10 +646,10 @@ public class IO_ES {
     }//cierre método leerCadena(String msg)
     
     /**
-     * Pide por teclado y devuelve una letra
-     * @param mensaje mensaje saliente.
-     * @return letra introducida.
-     * @throws Ocurre cuando no introducimos una letra.
+     * Pide por teclado y devuelve una cadena de texto de 10 caractwres, medante un mensaje dado.
+     * @param msg mensaje porporcionado para pedir la cadena de texto
+     * @param longitud longitud de la cadena de texto
+     * @return cadena de texto.
      */
     public static String leerCadena(String msg, int longitud){  
         //----------------------------------------------
@@ -696,9 +696,7 @@ public class IO_ES {
    /**
      * Pide por teclado y devuelve un caracter
      * @return a valor introducido.
-     * 
-     * Excepcion
-     *           Ocurre cuando no introducimos una letra.
+     *
      */
     public static char leerCaracter(){  
         //----------------------------------------------
@@ -746,11 +744,10 @@ public class IO_ES {
     }//cierre método LeerCaracter() 
     
     /**
-     * Pide por teclado y devuelve una letra
-     * @param mensaje mensaje saliente.
+     * Pide por teclado y devuelve un caracter
+     * @param msg mensaje saliente.
      * @return letra introducida.
-     * Excepcion
-     *           Ocurre cuando no introducimos una letra.
+     *
      */
     public static char leerCaracter(String msg){  
      //----------------------------------------------
@@ -797,11 +794,9 @@ public class IO_ES {
     }//cierre método LeerCaracter(String msg)
     
     /**
-     * Pide por teclaro un booleano y lo devuelve.
+     * Pide por teclaro una confirmación y devuelve un booleano.
      * @return  a booleano introduccido.
      * 
-     *  Excepcion
-     *           Ocurre cuando no se introduce un bolleano.
      */
     public static boolean leerBooleano(){  
      
@@ -869,8 +864,6 @@ public class IO_ES {
      * @param msg mensaje a mostrar al pedir por pantalla.
      * @return  a booleano.
      * 
-     *  Excepcion
-     *           Ocurre cuando no se introduce un bolleano.
      */
     public static boolean leerBooleano(String msg){  
         //----------------------------------------------
